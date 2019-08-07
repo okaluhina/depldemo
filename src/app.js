@@ -1,6 +1,7 @@
 require('dotenv').config()
 const express = require('express');
 const mongoose = require('mongoose');
+const User = require('./mongo');
 
 mongoose.connection.on('connected', () => {
   console.log(`Mongoose default connection open to ${process.env.MONGO_URI}`);
@@ -18,7 +19,9 @@ app.get('/health', function (req, res) {
   res.send('I am healthy!');
 });
 
-app.get('/another', function (req, res) {
+app.get('/users', function (req, res) {
+  const user = new User({username: 'user1'})
+  await user.save();
   res.send('I am another path!');
 });
 
