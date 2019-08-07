@@ -19,7 +19,7 @@ app.get('/health', function (req, res) {
   res.send('I am healthy!');
 });
 
-app.get('/users', function (req, res) {
+app.get('/users', async function (req, res) {
   const user = new User({username: 'user1'})
   await user.save();
   res.send('I am another path!');
