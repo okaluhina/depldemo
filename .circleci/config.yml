@@ -23,5 +23,5 @@ jobs:
       # run tests!
       - run: 
         environment:
-          - MONGO_URI: 'mongodb://localhost:27017/test'
+          MONGO_URI: mongodb://localhost:27017/test
         command: npm run e2e
