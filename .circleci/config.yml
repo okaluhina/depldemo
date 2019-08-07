@@ -23,8 +23,8 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       # run tests!
-      - run:
-        command: npm run e2e
-        environment:
-          MONGO_URI: mongodb://localhost:27017/test
+      # - run:
+      #   command: npm run e2e
+      #   environment:
+      #     MONGO_URI: mongodb://localhost:27017/test
         
