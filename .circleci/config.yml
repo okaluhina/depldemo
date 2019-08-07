@@ -2,13 +2,13 @@ version: 2
 branches:
     only:
       - development
+environment:
+  - MONGO_URI: mongodb://localhost:27017/test
 jobs:
   build:
     docker:
       - image: circleci/node:10
       - image: circleci/mongo:latest
-      environment:
-          MONGO_URI: mongodb://localhost:27017/test
     steps:
       - checkout
       - restore_cache:
@@ -25,4 +25,6 @@ jobs:
       # run tests!
       - run:
         command: npm run e2e
+        environment:
+          MONGO_URI: mongodb://localhost:27017/test
         
