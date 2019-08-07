@@ -1,5 +1,13 @@
 require('dotenv').config()
 const express = require('express');
+const mongoose = require('mongoose');
+
+mongoose.connection.on('connected', () => {
+  console.log(`Mongoose default connection open to ${process.env.MONGO_URI}`);
+});
+
+mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true});
+
 const app = express();
 
 app.get('/', function (req, res) {
