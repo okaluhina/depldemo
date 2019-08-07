@@ -27,4 +27,18 @@ jobs:
       #   command: npm run e2e
       #   environment:
       #     MONGO_URI: mongodb://localhost:27017/test
-        
+  deploy:
+    docker:
+      - image: buildpack-deps:trusty
+    steps:
+      - checkout
+      - run:
+          name: Deploy Development to Heroku
+          command: |
+            git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git development:master
+
+
+# HEROKU_APP_NAME
+# HEROKU_API_KEY
+# MONGO_URI
+# PORT
